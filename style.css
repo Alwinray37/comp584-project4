@@ -60,9 +60,6 @@ button{
 button:hover{
     background-color: lightgray;
 }
-button::highlight{
-    background-color: green;
-}
 .zeroBtn{
     grid-column: span 3;
     order: 1;
