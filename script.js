@@ -9,9 +9,9 @@ let screenState = false;
 
 // adding the numbered buttons 0-9
 for (let i = 0; i < 10; i++) {
-    const button = document.createElement("button");
-    button.textContent = i;
-    numContainer.appendChild(button);
+    const button = document.createElement("button");    // create button element
+    button.textContent = i;                             // insert number as button text
+    numContainer.appendChild(button);                   // append button element to number container div
 
     button.addEventListener("click", ()=> {
         // if screen shows 0, dont append more 0s 
@@ -52,10 +52,11 @@ deleteBtn.onclick = () => {
 let operation; 
 let a, b = 0;
 
+// button onclick functions, has their respoective arithmetic operations
 addBtn.onclick = () => {
     saveA();            // save current screen value to a var 
     operation = "add";  // save arithmetic operation
-    screenState = true;
+    screenState = true; // set screenState to true so that when a new number is clicked, its not appended from prev num
 }
 subBtn.onclick = () => {
     saveA();
@@ -79,17 +80,19 @@ equalsBtn.onclick = () =>{
 
 }
 
+// function to save whats on the screen to var a
 function saveA(){
     a = calcScreen.textContent;
 }
 
+// returns the computed value
 function calculate() {
     a = Number(a);
     b = Number(calcScreen.textContent);
 
 
     // debug log
-    console.log(operation, a, b);
+    console.log("calculate", operation, a, b);
 
     switch (operation){
         case "add": 
