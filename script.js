@@ -15,14 +15,14 @@ for (let i = 0; i < 10; i++) {
 
     button.addEventListener("click", ()=> {
         // if screen shows 0, dont append more 0s 
-        if(calcScreen.textContent == 0 || screenState == true){
+        if(calcScreen.textContent == 0 || screenState == true || calcScreen.textContent == "Error"){
             calcScreen.textContent = "";
         }
         screenState = false;
         calcScreen.append(i);
         
         // debug log for calcscreen
-        console.log(calcScreen.textContent);
+        console.log("Calc Screen:", calcScreen.textContent);
     })
 }
 
@@ -94,6 +94,7 @@ function calculate() {
     // debug log
     console.log("calculate", operation, a, b);
 
+    // switch statement that decides which arithmetic operation to do depending on operation var 
     switch (operation){
         case "add": 
             return a+b;
