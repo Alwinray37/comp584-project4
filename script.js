@@ -5,7 +5,7 @@ let subBtn = document.querySelector("#subtract-btn");
 let divBtn = document.querySelector("#divide-btn");
 let multBtn = document.querySelector("#multiply-btn");
 let equalsBtn = document.querySelector("#equals-btn");
-let screenState = false;
+let screenState = false; // to track whether an operation has been selected, and a new number needs to be shown on the calc screen
 
 // adding the numbered buttons 0-9
 for (let i = 0; i < 10; i++) {
@@ -13,7 +13,7 @@ for (let i = 0; i < 10; i++) {
     button.textContent = i;                             // insert number as button text
     numContainer.appendChild(button);                   // append button element to number container div
 
-    button.addEventListener("click", ()=> {
+    button.addEventListener("click", (event)=> {
         // if screen shows 0, dont append more 0s 
         if(calcScreen.textContent == 0 || screenState == true || calcScreen.textContent == "Error"){
             calcScreen.textContent = "";
@@ -23,6 +23,8 @@ for (let i = 0; i < 10; i++) {
         
         // debug log for calcscreen
         console.log("Calc Screen:", calcScreen.textContent);
+        // logs the event target
+        console.log(event.target);
     })
 }
 
