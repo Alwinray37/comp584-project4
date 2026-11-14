@@ -15,15 +15,17 @@ for (let i = 0; i < 10; i++) {
 
     button.addEventListener("click", (event)=> {
         // if screen shows 0, dont append more 0s 
+        // or if screenstate is true -- this means an operation was selected, therefore no more appending new numbers
+        // or if it says error, then clear screen 
         if(calcScreen.textContent == 0 || screenState == true || calcScreen.textContent == "Error"){
             calcScreen.textContent = "";
         }
-        screenState = false;
+        screenState = false; // setting back to false so we can append more for the new number
         calcScreen.append(i);
         
         // debug log for calcscreen
         console.log("Calc Screen:", calcScreen.textContent);
-        // logs the event target
+        // logs the event object's target
         console.log(event.target);
     })
 }
@@ -59,27 +61,30 @@ addBtn.onclick = () => {
     saveA();            // save current screen value to a var 
     operation = "add";  // save arithmetic operation
     screenState = true; // set screenState to true so that when a new number is clicked, its not appended from prev num
+    console.log( operation, a, b);
 }
 subBtn.onclick = () => {
     saveA();
     operation = "sub";
     screenState = true;
+    console.log( operation, a, b);
 }
 multBtn.onclick = () => {
     saveA();
     operation = "mult";
     screenState = true;
+    console.log( operation, a, b);
 }
 divBtn.onclick = () => {
     saveA();
     operation = "divide";
     screenState = true;
+    console.log( operation, a, b);
 }
 
 equalsBtn.onclick = () =>{
     calcScreen.textContent = calculate(a, b);
     operation = undefined;
-
 }
 
 // function to save whats on the screen to var a
