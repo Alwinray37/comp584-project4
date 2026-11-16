@@ -59,7 +59,7 @@ button:active{
 .calculator-buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border-radius: 10px;
+border-radius: 10px;
     /* gap: 10px; */
 }
 .extra-buttons{

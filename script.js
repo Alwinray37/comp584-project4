@@ -134,19 +134,53 @@ function calculate(a, b) {
             return "Error";
     }
 }
-
+// function to clear screen
 function clearScrn(){
     calcScreen.textContent = "0";
 }
 
 // add event listeners for keyboard entry 
 document.addEventListener("keydown", (event) => {
-    console.log(event.key);
+    console.log(event.key, typeof(event.key));
+    console.log(Number(event.key)); // checking if it logs NaN for inputs other than numbers
+
+    // clearing the screen before inputting numbers
     if(Number(calcScreen.textContent) == 0){
-        console.log("keydown, screen == true")
+        console.log("keydown, screen is zero, true")
         calcScreen.textContent ="";
     }
+
+    // if event.key is a number, use the numButton() function to append to the screen
     if(Number(event.key)){   
-        calcScreen.textContent += (event.key);
+        console.log(Number(event.key), "number check true");
+        numButton(event.key);
+    }
+    // reentering 0 
+    if(event.key == 0){
+        numButton(event.key);
+    }
+
+    // switch statement to activate the function related to the keyboard input 
+    switch(event.key){
+        case "+":
+            addBtn.click();
+            break;
+        case "-":
+            subBtn.click();
+            break;
+        case "/":
+            divBtn.click();
+            break;
+        case "*":
+            multBtn.click();
+            break;
+        case "Backspace":
+            deleteBtn.click();
+            break;
+        case "Enter":
+            equalsBtn.click();
+            break;
+        default:
+            console.log("Error in keydown listener switch");
     }
 });
